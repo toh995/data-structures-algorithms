@@ -20,6 +20,9 @@ class Stack:
 
         return self._list[-1]
 
+    def size(self):
+        return len(self._list)
+
     def display_stack(self):
         print(self._list)
 
