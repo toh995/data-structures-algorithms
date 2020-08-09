@@ -25,14 +25,14 @@ class TestQueue:
         queue = new_queue(size)
         assert queue.is_empty() == False
 
-    def test_push_increases_size(self, new_queue):
+    def test_enqueue_increases_size(self, new_queue):
         """should increase in size every time you enqueue"""
         queue = new_queue(size=0)
         for i in range(1, 11):
             queue.enqueue(i)
             assert i == queue.size()
 
-    def test_pop_decreases_size(self, new_queue):
+    def test_dequeue_decreases_size(self, new_queue):
         """should decrease in size every time you dequeue"""
         QUEUE_SIZE = 10
         queue = new_queue(QUEUE_SIZE)
@@ -44,7 +44,7 @@ class TestQueue:
             curr_size -= 1
             assert curr_size == queue.size()
 
-    def test_pop_returns_first_value(self):
+    def test_dequeue_returns_first_value(self):
         """dequeue() should return the first value in the queue"""
         queue = Queue()
 
@@ -55,7 +55,7 @@ class TestQueue:
         for i in r:
             assert i == queue.dequeue()
 
-    def test_pop_raises_EmptyqueueError_if_empty(self, new_queue):
+    def test_dequeue_raises_EmptyQueueError_if_empty(self, new_queue):
         """dequeue() should raise an EmptyQueueError if the queue is empty"""
         queue = new_queue(size=0)
         with pytest.raises(EmptyQueueError):
@@ -78,7 +78,7 @@ class TestQueue:
         queue.peek()
         assert size == queue.size()
 
-    def test_peek_raises_EmptyqueueError_if_empty(self, new_queue):
+    def test_peek_raises_EmptyQueueError_if_empty(self, new_queue):
         """peek() should raise an EmptyQueueError if the queue is empty"""
         queue = new_queue(size=0)
         with pytest.raises(EmptyQueueError):

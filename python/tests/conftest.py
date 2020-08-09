@@ -1,5 +1,3 @@
-import pytest
-
 # configure CLI output
 def pytest_itemcollected(item):
     par = item.parent.obj
