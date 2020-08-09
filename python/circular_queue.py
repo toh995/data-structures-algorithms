@@ -1,15 +1,15 @@
 class CircularQueue:
     def __init__(self, size):
-        self.size = size
+        self._size = size
         self._queue = [None] * size
-        self.head = -1
-        self.tail = -1
+        self._head = -1
+        self._tail = -1
 
     def is_empty(self):
-        return (self.head == -1) and (self.tail == -1)
+        return (self._head == -1) and (self._tail == -1)
 
     def is_full(self):
-        return (self.tail + 1) % self.size == self.head
+        return (self._tail + 1) % self._size == self._head
 
     def enqueue(self, new_value):
         if self.is_full():
@@ -17,29 +17,29 @@ class CircularQueue:
 
         # adjust indexes for head and tail
         if self.is_empty():
-            self.head = 0
-            self.tail = 0
+            self._head = 0
+            self._tail = 0
         
         else:
-            self.tail = (self.tail + 1) % self.size
+            self._tail = (self._tail + 1) % self._size
         
         # add the new value to the queue
-        self._queue[self.tail] = new_value
+        self._queue[self._tail] = new_value
 
     def dequeue(self):
         if self.is_empty():
             raise EmptyCircularQueueError()
 
-        ret = self._queue[self.head]
+        ret = self._queue[self._head]
 
         # if we are dequeueing the last item from the queue, then put into empty state
-        if self.head == self.tail:
-            self.head = -1
-            self.tail = -1
+        if self._head == self._tail:
+            self._head = -1
+            self._tail = -1
 
         # otherwise, adjust the head index normally
         else:
-            self.head = (self.head + 1) % self.size
+            self._head = (self._head + 1) % self._size
 
         return ret
 
@@ -47,7 +47,7 @@ class CircularQueue:
         if self.is_empty():
             raise EmptyCircularQueueError()
 
-        return self._queue[self.head]
+        return self._queue[self._head]
 
     def display(self):
         display_value = self._get_display_value()
@@ -57,16 +57,16 @@ class CircularQueue:
         if self.is_empty():
             return []
         
-        if self.head <= self.tail:
-            start = self.head
-            end = self.tail + 1
+        if self._head <= self._tail:
+            start = self._head
+            end = self._tail + 1
             return self._queue[start : end]
 
         else:
-            index = self.head
+            index = self._head
             first_list = self._queue[index:]
 
-            index = self.tail + 1
+            index = self._tail + 1
             second_list = self._queue[:index]
 
             return first_list + second_list
