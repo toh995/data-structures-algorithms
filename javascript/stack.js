@@ -39,6 +39,3 @@ class EmptyStackError extends Error {
         this.name = "EmptyStackError";
     }
 }
-
-const stack = new Stack();
-stack.peek();

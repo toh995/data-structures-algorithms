@@ -83,4 +83,4 @@ class TestStack:
         """peek() should raise an EmptyStackError if the stack is empty"""
         stack = new_stack(size=0)
         with pytest.raises(EmptyStackError):
-            stack.pop()
+            stack.peek()
