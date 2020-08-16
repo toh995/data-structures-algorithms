@@ -83,3 +83,8 @@ class TestQueue:
         queue = new_queue(size=0)
         with pytest.raises(EmptyQueueError):
             queue.peek()
+
+    def test_size_returns_zero_if_empty_queue(self, new_queue):
+        """size() should return 0 if the queue is empty"""
+        queue = new_queue(size=0)
+        assert 0 == queue.size()

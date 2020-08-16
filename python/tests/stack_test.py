@@ -84,3 +84,8 @@ class TestStack:
         stack = new_stack(size=0)
         with pytest.raises(EmptyStackError):
             stack.peek()
+
+    def test_size_returns_zero_if_empty_stack(self, new_stack):
+        """size() should return 0 if the stack is empty"""
+        stack = new_stack(size=0)
+        assert 0 == stack.size()
